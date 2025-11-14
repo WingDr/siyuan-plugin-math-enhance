@@ -15,7 +15,7 @@
     "@typescript-eslint/eslint-plugin": "8.11.0",
     "@typescript-eslint/parser": "8.11.0",
     "eslint": "^9.13.0",
-    "siyuan": "^1.0.4",
+    "siyuan": "^1.1.5",
     "copy-webpack-plugin": "^11.0.0",
     "webpack-sources": "^3.2.3",
     "css-loader": "^6.7.1",
@@ -30,9 +30,8 @@
     "zip-webpack-plugin": "^4.0.1"
   },
   "dependencies": {
-    "eslint": "^8.41.0",
-    "mathlive": "^0.101.1",
-    "siyuan": "^0.7.2",
+    "eslint": "^9.39.1",
+    "mathlive": "^0.108.2",
     "webpack-sources": "^3.2.3",
     "prettier": "^3.3.3",
     "prettier-plugin-latex": "^2.0.1"
