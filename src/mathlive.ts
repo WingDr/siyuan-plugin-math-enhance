@@ -1,5 +1,4 @@
 import { MathfieldElement } from 'mathlive';
-export { initMathLive }
 import { isMobile } from "./utils"
 import * as prettier from "prettier";
 import * as prettierPluginLatex from "prettier-plugin-latex";
@@ -10,11 +9,9 @@ declare global {
     var siyuan:any;
   }
 
-function initMathLive(){
-    MathfieldElement.fontsDirectory = null;
-    MathfieldElement.soundsDirectory = null;
-    var mf = new MathfieldElement();
-    mf.smartMode = true;
+export function initMathLive(){
+    // var mf = new MathfieldElement();
+    // mf.smartMode = true;
     initStyle()
 }
 
@@ -119,6 +116,13 @@ function addMathLiveListener(latexBlock:HTMLTextAreaElement,MathLiveBlock:any){
         latexBlock.dispatchEvent(evt);
     });
 
+    // 监听ctrl+z，并避免透传到思源本体
+    MathLiveBlock.addEventListener("keydown", (ev:any) => {
+        if (ev.ctrlKey && ev.key === "z") {
+            ev.preventDefault();
+        }
+    });
+
     latexBlock.addEventListener("input", (ev) => {
         if (liveCall === true){
             liveCall = false;
@@ -137,7 +141,9 @@ function initkeyboardBlock():HTMLElement{
 }
 
 function initMathLiveBlock(latexBlock:HTMLTextAreaElement):HTMLTextAreaElement{
-    var mathLiveBlock:any = document.createElement("math-field")
+    var mathLiveBlock = document.createElement("math-field") as HTMLTextAreaElement;
+    // 开启smart mode
+    mathLiveBlock.setAttribute("smart-mode", "true");
     // 初始化样式
     mathLiveBlock.style.cssText = `
     width: -webkit-fill-available; 
@@ -238,6 +244,13 @@ function initStyle() {
     document.body.style.setProperty("--contains-highlight-background-color", mode ? "hsl(212, 40%, 30%)" : "hsl(212, 40%, 90%)");
     document.body.style.setProperty("--keycap-shift-font-size", "1.2em");
     document.body.style.setProperty("--keyboard-padding-top", "-2px");
+}
+
+export function unloadStyle(){
+    var styleElement = document.getElementById("mathEnhance");
+    if (styleElement) {
+        styleElement.remove();
+    }
 }
 
 function addShortcut(mathLiveBlock:any){
