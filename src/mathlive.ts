@@ -167,6 +167,7 @@ function initMacros(mathLiveBlock:any){
             captureSelection: false,
         },
         rm: "\\mathrm#1",
+        nonumber: {args: 0, def: "", expand: false} // expand:false说明在original latex中不会替换
     };
     var tempMacro = JSON.parse(window.siyuan.config.editor.katexMacros || "{}");
     tempMacro["\\placeholder"] = "\\phantom";
