@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "eslint": "^9.39.1",
-    "mathlive": "^0.108.2",
+    "mathlive": "^0.101.1",
     "webpack-sources": "^3.2.3",
     "prettier": "^3.3.3",
     "prettier-plugin-latex": "^2.0.1"
